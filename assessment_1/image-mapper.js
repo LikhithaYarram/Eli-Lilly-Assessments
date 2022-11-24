@@ -9,6 +9,7 @@ let descArray=[];
 let currentElem={};
 uploadImageEvent.addEventListener('change', showFileDetails);
 function showFileDetails(event) {
+    console.log(event)
     document.getElementById('myImage').style.display = 'block';
     let input = document.getElementById("upload_image");
     let fReader = new FileReader();
@@ -16,14 +17,20 @@ function showFileDetails(event) {
     fReader.onloadend = function (event) {
         image = document.getElementById("myImage");
         image.src = event.target.result;
+        //to get dimensions of image
+        // image.onload=function(){
+        //     let h=this.height;
+        //     let w=this.width;
+        //     console.log(w,h)
+        // }
         image.addEventListener('click',onImageClick)
     }
 }
 function onImageClick(event){
     console.log(event)
     console.log('inside image click event')
-    const xPos=event.offsetX;
-    const yPos=event.offsetY;
+    const xPos=event.pageX-5;
+    const yPos=event.pageY-20;
     currentElem.xPos=xPos;
     currentElem.yPos=yPos;
     dialog.style.display='block'
@@ -48,19 +55,35 @@ save.addEventListener('click',function(){
         dot.style.position='absolute';
         dot.style.left=(currentElem.xPos)+'px';
         dot.style.top=(currentElem.yPos)+'px';
-        dot.className='well';
-        const val=document.createElement('div');
-        val.innerText=desc.value;
-        val.style.display='none';
-        dot.appendChild(val);
-        document.body.appendChild(dot)
+        dot.style.cursor='pointer';
+        document.body.appendChild(dot);
+        let tooltip=document.createElement('p');
+        tooltip.style.backgroundColor='white';
+        tooltip.style.position='absolute';
+        tooltip.style.left=(currentElem.xPos)+'px';
+        tooltip.style.top=(currentElem.yPos)+'px';
+        tooltip.style.paddingLeft='10px';
+        tooltip.style.paddingRight='10px';
+        tooltip.style.borderRadius='5px';
+        tooltip.innerText=desc.value;
+        const id='tt'+descArray.length;
+        tooltip.id=id
+        const css=`#${id}{opacity:0}#${id}:hover{opacity:0.9}`;
+        const style = document.createElement('style');
+        if (style.styleSheet) {
+            style.styleSheet.cssText = css;
+        } else {
+            style.appendChild(document.createTextNode(css));
+        }
+        document.body.appendChild(style);
+        document.body.appendChild(tooltip)
         descArray.push(currentElem);
         currentElem={};
+        desc.value=''
         cancelEvent();
     }else{
         document.getElementById('desc_error').style.display='block';
     }
-    // if(document.getElementById('desc').value)
 })
 
 function valChange(value){

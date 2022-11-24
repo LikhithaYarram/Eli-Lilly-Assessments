@@ -1,36 +1,36 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Assessment 1</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="site.css">
-  <script src="image-mapper.js" defer></script>
+    <meta charset="utf-8">
+    <title>Assessment 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="site.css">
+    <script src="image-mapper.js" defer></script>
 </head>
+
 <body>
     <form class="uploadForm" name='uploadForm'>
-        <label >Please upload an image:</label>
+        <label>Please upload an image:</label>
         <br>
-        <input type="file" id="upload_image" name="uploadImage" >
+        <input type="file" id="upload_image" name="uploadImage">
     </form>
     <div id="imageDiv">
         <img src="" name="myImage" id="myImage" width=800 height=800>
     </div>
     <div id='myDialog' class='myDialogDiv'>
         <div class="dialog-content">
-            <!-- <span class="close">&times;</span> -->
             <p>Description</p>
-            
-                <input type="text" id='desc' name='desc' oninput="valChange(this.value)">
-                <p id='desc_error'>Please enter a value</p>
-                <br>
-                <div>
-                    <button class='save'>&check;Save</button>
-                    <button class='cancel'>&times;Cancel</button>
-                </div>               
-                     
+            <input type="text" id='desc' name='desc' oninput="valChange(this.value)">
+            <p id='desc_error'>Please enter a value</p>
+            <br>
+            <div>
+                <button class='save'>&check;Save</button>
+                <button class='cancel'>&times;Cancel</button>
+            </div>
+
         </div>
     </div>
 </body>
-</html>
 
+</html>
