@@ -10,9 +10,18 @@
 </head>
 
 <body>
-    <form name='tickerForm'>
+
+    <div >
         <label for='symbol'>Enter Ticker Symbol:&nbsp;</label>
-        <input type="text" id='symbolInput' name='symbolInput' name="symbol">
-        <button class='go'>Go</button>
-    </form>
+        <input type="text" id='symbolInput' name='symbolInput' name="symbol" placeholder="IBM, RELIANCE.BSE etc.,">
+        <button class='go' id='goBtn'>Go</button>
+    </div>
+    <div class="loader" id='loader' style="display:none;"></div>
+    <div>
+        <div id="tickerSymbol" style="font-weight: bold;font-size:18px;text-decoration: underline;"></div>
+        <br>
+        <div id="stockData">
+
+        </div>
+    </div>
 </body>
