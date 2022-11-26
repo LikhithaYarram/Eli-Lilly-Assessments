@@ -11,20 +11,18 @@
 
 <body>
     <form class="uploadForm" name='uploadForm'>
-        <label for="upload_image">Please upload an image:
-            <a style="border: black;border-radius: 5px;border-style: outset;padding: 3px;cursor: pointer;">Select File</a>
+        <label for="upload_image" style="font-weight:bold">Please upload an image:
+            <a class="selectImage" style="font-weight: normal;">Select File</a>
         </label>
         <br>
-        <input type="file" id="upload_image" name="uploadImage" style="display:none;">
+        <input type="file" id="upload_image" accept="image/*" name="uploadImage" style="display:none;">
         <div id="imageDetails" style="display:none;padding-top:5px">
         </div>
     </form>
-    <button id="table_button">Show Description Table</button>
-    <div id="imageDiv">
-        <img src="" name="myImage" id="myImage" width=800 height=800>
-    </div>
+    <div><button id="table_button" class="table_button" style="display: none;">Show Description Table</button></div>
+    <img src="" name="myImage" id="myImage" width=1000 height=1000 style="display: none;">
     <div id='myDialog' class='myDialogDiv'>
-        <div class="dialog-content">
+        <div class="dialog-content" id="dialogContent">
             <label for='desc'>Description:&nbsp;</label>
             <input type="text" id='desc' name='desc' oninput="valChange(this.value)">
             <div id='desc_error' class="error-message">Please enter a value</div>
@@ -33,13 +31,13 @@
                 <button class='save'>&check;Save</button>
                 <button class='cancel'>X&nbsp;Cancel</button>
             </div>
-
         </div>
     </div>
 
     <div id="descDetailDialog" class="descDetailDialog">
         <div class="descDetailContent">
-            <table></table>
+            <div id="descCloseIcon" class="descCloseIcon">X</div>
+            <table id="descTable"></table>
         </div>
     </div>
 </body>
