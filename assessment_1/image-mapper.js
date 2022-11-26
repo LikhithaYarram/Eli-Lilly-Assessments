@@ -5,11 +5,13 @@ const save = document.getElementsByClassName('save')[0];
 const desc = document.getElementById('desc');
 const tableDialog = document.getElementById('descDetailDialog');
 const tableButton = document.getElementById('table_button');
+const loader=document.getElementById('loader');
 let descArray = [];
 let currentElem = {};
 uploadImageEvent.addEventListener('change', showFileDetails);
 function showFileDetails(event) {
     try {
+        loader.style.display='block';
         const input = document.getElementById("upload_image");
         const fReader = new FileReader();
         fReader.readAsDataURL(input.files[0]);
@@ -26,6 +28,7 @@ function showFileDetails(event) {
                 image.style.display = 'none';
                 window.URL.revokeObjectURL(img.src);
                 alert('Please upload a correct image format');
+                loader.style.display='none';
             });
             img.onload = function () {
                 const width = img.naturalWidth,
@@ -37,6 +40,7 @@ function showFileDetails(event) {
                 imageDetailsDiv.innerText = `Image Name: ${input.files[0].name}\n Dimensions: ${width} x ${height}\n MIME Type:${input.files[0].type}`
                 image.src = event.target.result;
                 descArray = [];
+                loader.style.display='none';
             };
             image.addEventListener('click', onImageClick)
         }
