@@ -23,9 +23,7 @@ function getStockData() {
             .then(response => response.text())
             .then(result => {
                 if (result) {
-                    console.log(Constants.TIME_SERIES_DAILY)
                     stockData = result["Time Series (Daily)"];
-                    console.log(stockData)
                     loader.style.display='none';
                     document.getElementById("tickerSymbol").innerText = `Stock price over time of ${tickerSymbol}`;
                     document.getElementById('stockData').innerHTML=result;
